@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>muffingroup</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <style>
+    body {
+      margin: 0;
+      background-image: url("home_horse_bg.jpg");
+      background-size: cover;   
+      background-position: center; 
+      background-repeat: repeat;
+      font-family: Arial, sans-serif;
+    }
+
+    
+    .top_bar_ {
+      display: flex;                
+      justify-content: space-between;
+      align-items: center;          
+      padding: 35px 50px;          
+      color: white; 
+      font-size: 15px;
+    }
+
+    .logo img {
+      height: 25px;   
+      width: auto;
+    }
+
+    .menu span {
+      padding: 0 15px;
+      cursor: pointer;
+    }
+
+    .menu span:hover {
+      text-decoration: underline;
+    }
+
+    .section2{
+        background-color: #FFFFFF;
+        margin-left: 47px;
+        margin-right: 47px;
+          display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 40px;                             
+  /* width: 100%; */
+  /* max-width: 1400px;                      */
+                       
+  padding: 4%;
+          width: auto;
+          height: auto;
+    }
+    .left_side{
+      text-align: right;
+    }
+   
+    .left-side h1 {
+  font-size: 2rem;
+  letter-spacing: 2px;
+  color: #a6855c;
+  margin-bottom: 10px;
+}
+
+    .about{
+        color: #917547;
+        margin: 0px 0px 15px;
+        font-size: 42px;
+        line-height: 42px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        font-family: "Playfair Display", Helvetica, Arial, sans-serif;
+        margin-bottom: 15px;
+        /* float: left; */
+        text-align: right;
+        
+    }
+   .line {
+  border: none;
+  border-top: 1px solid #c4a67a;
+  margin: 15px auto;
+  width: 50%;
+}
+    .hrs1{
+      height: auto;
+      max-width: 100%;
+    }
+    /* .icon-facebook {
+      font-size: 20px;
+      color: #ce996a;
+    } */
+    p.items{
+      font-size: 15px;
+      color: #917547;
+      margin: 0;
+      padding: 0;
+      text-align: left;
+      font-weight: 600;
+    }
+    i{
+      font-style: italic;
+    }
+    .columns {
+  display: flex;
+  gap: 20px;
+  /* margin-top: 25px; */
+  align-items: flex-start;
+  flex: 1;
+}
+.col h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #000;
+}
+.see-more {
+  /* align-self: start; */
+  /* margin-top: 20px; */
+  /* background: none; */
+  display: inline-block;
+  border: 1px solid #a6855c;
+  border-width: 2px;
+  border-radius: 3px;
+  padding: 10px 20px;
+  font-size: inherit;
+  position: relative;
+  cursor: pointer;
+  color: #a6855c;
+  /* transition: background 0.3s; */
+}
+.see-more:hover {
+  background-color: #a6855c;
+  color: white;}
+
+   .section3 {
+      background: #fff;
+      margin: 40px;
+      padding: 30px;
+    }
+
+       .container3 {
+      background: url('home_horse_riding_parallax1.jpg') no-repeat center center/cover;
+      padding: 60px 20px;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+      .line3 {
+      width: 80px;
+      height: 2px;
+      background: #fff;
+      margin: 0 auto 20px;
+    }
+      .section4 {
+      background: #fff;
+      margin: 40px;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .section4 h2 {
+      font-size: 2.5rem;
+      color: #8a6b3c;
+      margin-bottom: 10px;
+    }
+
+    .line4 {
+      width: 80px;
+      height: 2px;
+      background: #c5a46d;
+      margin: 0 auto 40px;
+    }
+      .offer-items {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .offer-item {
+      flex: 1;
+      min-width: 180px;
+      max-width: 200px;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .offer-item img {
+      width: 60px;
+      margin-bottom: 15px;
+    }
+
+    .offer-item h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .offer-item p {
+      font-size: 0.95rem;
+      color: #444;
+    }
+      .bottom-offer {
+      margin-top: 40px;
+      background: #eee8dc;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .bottom-offer h3 {
+      font-size: 1.8rem;
+      color: #8a6b3c;
+      margin: 0 auto;
+    }
+     .btn-offer {
+      background: transparent;
+      border: 2px solid #8a6b3c;
+      color: #8a6b3c;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+      .btn-offer:hover {
+      background: #8a6b3c;
+      color: #fff;
+    }
+
+     .footer {
+      background: #000;
+      color: #ddd;
+      padding: 40px 20px 10px;
+      margin-left: 40px;
+      margin-right: 40px;
+      margin-bottom: 40px;
+    }
+
+    
+    .footer .call {
+      text-align: center;
+      font-size: 1.4rem;
+      color: #fff;
+      margin-bottom: 30px;
+    }
+    
+     .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .footer-col {
+      flex: 1;
+      min-width: 220px;
+    }
+     .footer-col h3 {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      color: #fff;
+    }
+      .footer-col p {
+      font-size: 0.95rem;
+      color: #bbb;
+      line-height: 1.6;
+    }
+       .footer-links .link-columns {
+  display: flex;
+  gap: 40px; 
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links ul li {
+  margin: 8px 0;
+}
+
+.footer-links ul li a {
+  color: #c9a76c;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.footer-links ul li a:hover {
+  text-decoration: underline;
+}
+        .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-logo img {
+      /* width: 40px; */
+      height: auto;
+    }
+    .footer-bottom {
+      border-top: 1px solid #333;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    .footer-bottom a {
+      color: #c9a76c;
+      text-decoration: none;
+    }
+
+    .footer-bottom a:hover {
+      text-decoration: underline;
+    }
+
+
+                 /* responsiveness */
+
+                
+
+/* ---          ≤900px --- */
+@media (max-width: 900px) {
+  .top_bar_ {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    text-align: left;
+  }
+
+  .menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .section2 {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding: 5%;
+  }
+
+  .center-image img {
+    width: 100%;
+    height: auto;
+  }
+
+  .columns {
+    flex-direction: column;
+  }
+
+  .offer-items {
+    justify-content: center;
+  }
+
+  .offer-item {
+    flex: 1 1 45%;
+    max-width: 45%;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-links .link-columns {
+    justify-content: center;
+  }
+}
+
+/* ---    ≤600px --- */
+@media (max-width: 600px) {
+  body {
+    background-position: top center;
+  }
+
+  .top_bar_ {
+    padding: 15px;
+  }
+
+  .menu {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .menu span {
+    padding: 5px 0;
+    font-size: 14px;
+  }
+
+  .section2 {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .left_side, .right-side {
+    text-align: center;
+  }
+
+  .about {
+    text-align: center;
+    font-size: 32px;
+  }
+
+  .columns {
+    flex-direction: column;
+  }
+
+  .offer-items {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .offer-item {
+    max-width: 90%;
+  }
+
+  .bottom-offer {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .footer {
+    margin: 20px;
+    padding: 30px 15px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .footer-links .link-columns {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-bottom {
+    font-size: 0.8rem;
+    color: #000;
+  }
+}
+
+                  /* cv design */
+                  
+.cv-section {
+  font-family: "Playfair Display", Helvetica, Arial, sans-serif;
+  color: #917547;
+}
+
+.cv-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.cv-item {
+  border: 1px solid #c5a46d;
+  border-radius: 6px;
+  padding: 20px;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.cv-item h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #a6855c;
+  cursor: pointer;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.cv-item h2::after {
+  content: "▼";
+  font-size: 0.9rem;
+  color: #c5a46d;
+  position: absolute;
+  right: 10px;
+  transition: transform 0.3s;
+}
+
+.cv-item:hover h2::after {
+  transform: rotate(180deg);
+}
+
+.cv-content {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.5s ease;
+  margin-top: 10px;
+  color: #444;
+}
+
+.cv-item:hover .cv-content {
+  max-height: 300px;
+  opacity: 1;
+}
+
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="top_bar_">
+
+    <div class="logo">
+      <img src="horse-riding-fotter.png" alt="Logo">
+    </div>
+
+    <div class="menu">
+      <span>HOME</span>
+      <span>ABOUT</span>
+      <span>THE HOTEL</span>
+      <span>OFFER AND PRICES</span>
+      <span>CONTACT</span>
+      <span>BUY NOW</span>
+    </div>
+  </div>
+  
+
+    <!-- ================= CV SECTION ================= -->
+  <section class="cv-section" style="background-color: #fff; margin: 40px; padding: 40px; border-radius: 8px;">
+    <h1 class="text-center" style="color: #a6855c; font-weight: 700; letter-spacing: 2px; margin-bottom: 40px;">
+      PERSONAL CV
+    </h1>
+
+    <div class="cv-container">
+      <!-- Personal Info -->
+      <div class="cv-item">
+        <h2>Personal Information</h2>
+        <div class="cv-content">
+          <p><strong>Name:</strong> Abdullah </p>
+          <p><strong>Email:</strong> Abdullah@email.com</p>
+          <p><strong>Phone:</strong> +123 456 7890</p>
+          <p><strong>Location:</strong> Lahore, Pakistan</p>
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="cv-item">
+        <h2>Education</h2>
+        <div class="cv-content">
+          <p><strong>Bachelor of Computer Science</strong> — XYZ University (2021 - 2025)</p>
+          <p><strong>High School</strong> — ABC School (2019 - 2021)</p>
+        </div>
+      </div>
+
+      <!-- Skills -->
+      <div class="cv-item">
+        <h2>Skills</h2>
+        <div class="cv-content">
+          <ul>
+            <li>HTML, CSS, JavaScript</li>
+            <li>Bootstrap, React</li>
+            <li>Python, MySQL</li>
+            <li>Responsive Web Design</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Experience / Projects -->
+      <div class="cv-item">
+        <h2>Experience / Projects</h2>
+        <div class="cv-content">
+          <p><strong>Portfolio Website</strong> — Built a responsive website using HTML, CSS, and JS.</p>
+          <p><strong>Inventory Management System</strong> — Developed a full-stack CRUD app using Python & MySQL.</p>
+        </div>
+      </div>
+
+      <!-- Contact  -->
+      <div class="cv-item">
+        <h2>Contact Information</h2>
+        <div class="cv-content">
+          <p><strong>Email:</strong> Abdullah@email.com</p>
+          <p><strong>LinkedIn:</strong> linkedin.com/in/Abdullah</p>
+          <p><strong>GitHub:</strong> github.com/Abdullah</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+   <div class="footer-bottom" style="background-color: black; color:white">
+      © 2022 Betheme by <a href="https://muffingroup.com" target="_blank">Muffin group</a> |
+      Powered by <a href="https://wordpress.org" target="_blank">WordPress</a>
+    </div>
+   </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
