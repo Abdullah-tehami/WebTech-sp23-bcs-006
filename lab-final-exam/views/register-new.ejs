@@ -1,0 +1,127 @@
+<!-- Register Page -->
+<div class="auth-wrapper">
+    <div class="auth-container">
+        <!-- Auth Header -->
+        <div class="auth-header">
+            <h1 class="auth-title">CREATE ACCOUNT</h1>
+            <p class="auth-subtitle">Join our equestrian community</p>
+        </div>
+
+        <!-- Error Message -->
+        <% if (message) { %>
+            <div class="alert alert-error">
+                <i class="fas fa-exclamation-circle"></i> <%= message %>
+            </div>
+        <% } %>
+
+        <!-- Register Form -->
+        <form action="/auth/register" method="POST" class="auth-form">
+            <div class="form-group">
+                <label for="name">
+                    <i class="fas fa-user"></i> Full Name
+                </label>
+                <input 
+                    type="text" 
+                    id="name" 
+                    name="name" 
+                    placeholder="Enter your full name"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="email">
+                    <i class="fas fa-envelope"></i> Email Address
+                </label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    placeholder="Enter your email"
+                    required
+                >
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="password">
+                        <i class="fas fa-lock"></i> Password
+                    </label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        placeholder="Min 6 characters"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">
+                        <i class="fas fa-lock"></i> Confirm Password
+                    </label>
+                    <input 
+                        type="password" 
+                        id="confirmPassword" 
+                        name="confirmPassword" 
+                        placeholder="Confirm password"
+                        required
+                    >
+                </div>
+            </div>
+
+            <div class="form-agreement">
+                <label class="checkbox-custom">
+                    <input type="checkbox" name="agree" required>
+                    <span>I agree to the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a></span>
+                </label>
+            </div>
+
+            <button type="submit" class="btn-auth-submit">
+                <i class="fas fa-user-plus"></i> CREATE ACCOUNT
+            </button>
+        </form>
+
+        <!-- Divider -->
+        <div class="auth-divider">
+            <span>OR</span>
+        </div>
+
+        <!-- Social Register -->
+        <div class="social-login">
+            <button class="btn-social facebook">
+                <i class="fab fa-facebook-f"></i> Facebook
+            </button>
+            <button class="btn-social google">
+                <i class="fab fa-google"></i> Google
+            </button>
+        </div>
+
+        <!-- Sign In Link -->
+        <div class="auth-footer">
+            <p>Already have an account? <a href="/login">Sign in here</a></p>
+        </div>
+    </div>
+
+    <!-- Decorative Image -->
+    <div class="auth-decoration">
+        <div class="decoration-content">
+            <h2>Welcome to Our Community</h2>
+            <p>Experience the finest collection of equestrian products and services tailored for passionate riders.</p>
+            <div class="decoration-features">
+                <div class="feature">
+                    <i class="fas fa-gift"></i>
+                    <span>Exclusive Offers</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-heart"></i>
+                    <span>Wishlist Features</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-truck"></i>
+                    <span>Priority Shipping</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

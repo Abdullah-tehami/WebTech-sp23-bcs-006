@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %> | Horse Riding Store</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar-main">
+        <div class="navbar-container">
+            <!-- Logo -->
+            <div class="navbar-logo">
+                <a href="/">
+                    <img src="/images/retina-horse-riding.png" alt="Logo">
+                </a>
+            </div>
+
+            <!-- Menu Toggle for Mobile -->
+            <button class="navbar-toggle" id="navbarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Navigation Menu -->
+            <div class="navbar-menu" id="navbarMenu">
+                <a href="/" class="navbar-item">
+                    <i class="fas fa-home"></i> HOME
+                </a>
+                <a href="/shop" class="navbar-item">
+                    <i class="fas fa-store"></i> SHOP
+                </a>
+                <a href="/contact" class="navbar-item">
+                    <i class="fas fa-envelope"></i> CONTACT
+                </a>
+
+                <div class="navbar-divider"></div>
+
+                <% if (user) { %>
+                    <span class="navbar-welcome">Welcome, <%= user.name || user.email %></span>
+                    <% if (user.role === 'admin') { %>
+                        <a href="/admin" class="navbar-item">
+                            <i class="fas fa-cog"></i> ADMIN PANEL
+                        </a>
+                    <% } %>
+                    <a href="/cart" class="navbar-item navbar-cart">
+                        <i class="fas fa-shopping-cart"></i> CART
+                        <span class="cart-badge">0</span>
+                    </a>
+                    <a href="/logout" class="navbar-item navbar-logout">
+                        <i class="fas fa-sign-out-alt"></i> LOGOUT
+                    </a>
+                <% } else { %>
+                    <a href="/login" class="navbar-item">
+                        <i class="fas fa-sign-in-alt"></i> LOGIN
+                    </a>
+                    <a href="/register" class="navbar-item navbar-register">
+                        <i class="fas fa-user-plus"></i> REGISTER
+                    </a>
+                    <a href="/cart" class="navbar-item navbar-cart">
+                        <i class="fas fa-shopping-cart"></i> CART
+                        <span class="cart-badge">0</span>
+                    </a>
+                <% } %>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <%- body %>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="call">Call us at +61 (0) 3 8376 6284</div>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>Our Mission</h3>
+                <p>
+                    We are dedicated to providing exceptional products and service to the 
+                    equestrian community. Quality, reliability, and customer satisfaction 
+                    are at the heart of everything we do.
+                </p>
+            </div>
+
+            <div class="footer-col footer-links">
+                <h3>Quick Links</h3>
+                <div class="link-columns">
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/shop">Shop</a></li>
+                        <li><a href="/cart">Cart</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="/login">Login</a></li>
+                        <li><a href="/register">Register</a></li>
+                        <% if (user) { %>
+                            <li><a href="/logout">Logout</a></li>
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <img src="/images/horse-riding-fotter.png" alt="Logo">
+                </div>
+                <p>
+                    Your trusted partner for all equestrian needs. Browse our extensive 
+                    collection and experience the difference quality makes.
+                </p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            © <%= new Date().getFullYear() %> Horse Riding Store | All Rights Reserved
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script>
+        // Navbar Toggle for Mobile
+        document.getElementById('navbarToggle').addEventListener('click', function() {
+            document.getElementById('navbarMenu').classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.navbar-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.getElementById('navbarMenu').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

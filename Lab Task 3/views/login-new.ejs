@@ -1,0 +1,100 @@
+<!-- Login Page -->
+<div class="auth-wrapper">
+    <div class="auth-container">
+        <!-- Auth Header -->
+        <div class="auth-header">
+            <h1 class="auth-title">WELCOME BACK</h1>
+            <p class="auth-subtitle">Sign in to your account</p>
+        </div>
+
+        <!-- Error Message -->
+        <% if (message) { %>
+            <div class="alert alert-error">
+                <i class="fas fa-exclamation-circle"></i> <%= message %>
+            </div>
+        <% } %>
+
+        <!-- Login Form -->
+        <form action="/auth/login" method="POST" class="auth-form">
+            <div class="form-group">
+                <label for="email">
+                    <i class="fas fa-envelope"></i> Email Address
+                </label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    placeholder="Enter your email"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password">
+                    <i class="fas fa-lock"></i> Password
+                </label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    placeholder="Enter your password"
+                    required
+                >
+            </div>
+
+            <div class="form-remember">
+                <label class="checkbox-custom">
+                    <input type="checkbox" name="remember">
+                    <span>Remember me</span>
+                </label>
+                <a href="#" class="forgot-password">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="btn-auth-submit">
+                <i class="fas fa-sign-in-alt"></i> SIGN IN
+            </button>
+        </form>
+
+        <!-- Divider -->
+        <div class="auth-divider">
+            <span>OR</span>
+        </div>
+
+        <!-- Social Login -->
+        <div class="social-login">
+            <button class="btn-social facebook">
+                <i class="fab fa-facebook-f"></i> Facebook
+            </button>
+            <button class="btn-social google">
+                <i class="fab fa-google"></i> Google
+            </button>
+        </div>
+
+        <!-- Sign Up Link -->
+        <div class="auth-footer">
+            <p>Don't have an account? <a href="/register">Create one here</a></p>
+        </div>
+    </div>
+
+    <!-- Decorative Image -->
+    <div class="auth-decoration">
+        <div class="decoration-content">
+            <h2>Equestrian Excellence</h2>
+            <p>Join our community of passionate riders and discover premium products for your equestrian journey.</p>
+            <div class="decoration-features">
+                <div class="feature">
+                    <i class="fas fa-check"></i>
+                    <span>Premium Quality</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-check"></i>
+                    <span>Fast Delivery</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-check"></i>
+                    <span>Secure Shopping</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

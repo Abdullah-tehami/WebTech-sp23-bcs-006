@@ -1,0 +1,121 @@
+<!-- Cart Page -->
+<div class="cart-wrapper">
+    <!-- Cart Header -->
+    <div class="cart-header">
+        <h1 class="cart-title">SHOPPING CART</h1>
+        <p class="cart-subtitle">Review and manage your items</p>
+    </div>
+
+    <div class="cart-container">
+        <% if (cartItems && cartItems.length > 0) { %>
+            <!-- Cart Items -->
+            <div class="cart-items-section">
+                <div class="items-header">
+                    <span class="col-product">Product</span>
+                    <span class="col-price">Price</span>
+                    <span class="col-quantity">Quantity</span>
+                    <span class="col-total">Total</span>
+                    <span class="col-action">Action</span>
+                </div>
+
+                <% let cartTotal = 0; %>
+                <% cartItems.forEach(item => { 
+                    const itemTotal = (item.price || 0) * (item.qty || 0);
+                    cartTotal += itemTotal;
+                %>
+                    <div class="cart-item">
+                        <div class="item-product">
+                            <img src="<%= item.image %>" alt="<%= item.name %>">
+                            <div class="item-details">
+                                <h4><%= item.name %></h4>
+                                <p class="item-category"><%= item.category %></p>
+                            </div>
+                        </div>
+                        <div class="item-price">$<%= (item.price || 0).toFixed(2) %></div>
+                        <div class="item-quantity">
+                            <div style="display: flex; gap: 5px;">
+                                <a class="btn-qty" href="/cart/update/<%= item._id %>/sub" <% if ((item.qty||0) <= 1) { %>style="pointer-events:none; opacity:0.5;"<% } %>>-</a>
+                                <input type="text" value="<%= item.qty || 0 %>" readonly>
+                                <a class="btn-qty" href="/cart/update/<%= item._id %>/add">+</a>
+                            </div>
+                        </div>
+                        <div class="item-total">$<%= itemTotal.toFixed(2) %></div>
+                        <a class="btn-remove" href="/cart/remove/<%= item._id %>" title="Remove item" onclick="return confirm('Remove this item?');">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </div>
+                <% }); %>
+            </div>
+
+            <!-- Cart Summary -->
+            <div class="cart-summary">
+                <div class="summary-card">
+                    <h3>Order Summary</h3>
+                    
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span>$<%= cartTotal.toFixed(2) %></span>
+                    </div>
+                    
+                    <div class="summary-row">
+                        <span>Shipping</span>
+                        <span class="shipping-cost">Free</span>
+                    </div>
+                    
+                    <div class="summary-row">
+                        <span>Tax (10%)</span>
+                        <span>$<%= (cartTotal * 0.1).toFixed(2) %></span>
+                    </div>
+                    
+                    <div class="summary-divider"></div>
+                    
+                    <div class="summary-total">
+                        <span>Total Amount</span>
+                        <span class="total-price">$<%= (cartTotal + cartTotal * 0.1).toFixed(2) %></span>
+                    </div>
+
+                    <div class="promo-code">
+                        <input type="text" placeholder="Enter promo code">
+                        <button class="btn-apply-promo">Apply</button>
+                    </div>
+
+                    <a href="/checkout" class="btn-checkout">
+                        <i class="fas fa-lock"></i> PROCEED TO CHECKOUT
+                    </a>
+
+                    <a href="/shop" class="btn-continue-shopping">
+                        <i class="fas fa-arrow-left"></i> Continue Shopping
+                    </a>
+                </div>
+
+                <!-- Trust Badges -->
+                <div class="checkout-trust">
+                    <div class="trust-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Secure Payment</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="fas fa-truck"></i>
+                        <span>Fast Shipping</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="fas fa-undo"></i>
+                        <span>Easy Returns</span>
+                    </div>
+                </div>
+            </div>
+        <% } else { %>
+            <!-- Empty Cart -->
+            <div class="empty-cart">
+                <div class="empty-cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <h2>Your Cart is Empty</h2>
+                <p>Explore our premium collection of equestrian products</p>
+                <a href="/shop" class="btn-shop-now">
+                    <i class="fas fa-store"></i> Browse Products
+                </a>
+            </div>
+        <% } %>
+    </div>
+</div>

@@ -1,0 +1,136 @@
+<div class="admin-form-shell">
+    <div class="admin-form-header">
+        <div>
+            <p class="eyebrow"><%= product ? 'Edit Product' : 'Add Product' %></p>
+            <h1><%= product ? 'Update product details' : 'Create a new product' %></h1>
+            <p class="subtext">Upload images, set pricing, choose category, and publish.</p>
+        </div>
+        <div class="header-actions">
+            <a href="/admin" class="btn ghost">Back to Dashboard</a>
+            <button form="productForm" type="submit" class="btn primary">
+                <i class="fas fa-save"></i>
+                <span><%= product ? 'Save Changes' : 'Create Product' %></span>
+            </button>
+        </div>
+    </div>
+
+    <form id="productForm" class="admin-form" action="<%= product ? '/admin/product/edit/' + product._id : '/admin/product/create' %>" method="POST" enctype="multipart/form-data">
+        <div class="form-grid">
+            <!-- Left column -->
+            <div class="card">
+                <div class="card-title">Basics</div>
+                <label class="field">
+                    <span>Product Name</span>
+                    <input type="text" name="name" value="<%= product ? product.name : '' %>" required placeholder="Premium Saddle">
+                </label>
+
+                <label class="field">
+                    <span>Description</span>
+                    <textarea name="description" rows="5" placeholder="Write a clear, concise description"><%= product ? product.description : '' %></textarea>
+                </label>
+            </div>
+
+            <!-- Right column -->
+            <div class="card">
+                <div class="card-title">Pricing & Category</div>
+                <div class="two-col">
+                    <label class="field">
+                        <span>Price (USD)</span>
+                        <input type="number" name="price" step="0.01" value="<%= product ? product.price : '' %>" required placeholder="299.99">
+                    </label>
+                    <label class="field">
+                        <span>Category</span>
+                        <select name="category" required>
+                            <option value="">Select category</option>
+                            <option value="Riding Equipment" <%= product && product.category=='Riding Equipment' ? 'selected' : '' %>>Riding Equipment</option>
+                            <option value="Apparel" <%= product && product.category=='Apparel' ? 'selected' : '' %>>Apparel</option>
+                            <option value="Horse Care" <%= product && product.category=='Horse Care' ? 'selected' : '' %>>Horse Care</option>
+                            <option value="Stable Supplies" <%= product && product.category=='Stable Supplies' ? 'selected' : '' %>>Stable Supplies</option>
+                            <option value="Accessories" <%= product && product.category=='Accessories' ? 'selected' : '' %>>Accessories</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div class="field">
+                    <span>Upload Product Image</span>
+                    <label class="upload-drop">
+                        <input type="file" name="image" id="imageInput" accept="image/*">
+                        <div class="upload-body">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <div>Drop image here or click to browse</div>
+                            <small>JPG/PNG/GIF/WebP up to 5MB</small>
+                        </div>
+                    </label>
+                    <div class="or-divider">or</div>
+                    <input type="text" name="imageUrl" value="<%= product && product.image && !product.image.startsWith('/uploads/') ? product.image : '' %>" placeholder="https://example.com/image.jpg">
+                    <% if (product && product.image) { %>
+                        <div class="current-image">
+                            <div class="thumb" style="background-image: url('<%= product.image %>')"></div>
+                            <div class="current-meta">
+                                <strong>Current image</strong>
+                                <label class="checkbox-row">
+                                    <input type="checkbox" name="removeImage" value="yes"> Remove current image
+                                </label>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+
+                <div class="toggles">
+                    <label class="checkbox-row">
+                        <input type="checkbox" id="featured" name="featured" value="yes" <%= product && product.featured ? 'checked' : '' %>> Featured product
+                    </label>
+                    <label class="checkbox-row">
+                        <input type="checkbox" id="bestseller" name="bestseller" value="yes" <%= product && product.bestseller ? 'checked' : '' %>> Bestseller
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <a href="/admin" class="btn ghost">Cancel</a>
+            <button type="submit" class="btn primary">
+                <i class="fas fa-save"></i>
+                <span><%= product ? 'Save Changes' : 'Create Product' %></span>
+            </button>
+        </div>
+    </form>
+</div>
+
+<style>
+.admin-form-shell { padding: 20px 20px 60px; max-width: 1200px; margin: 0 auto; color: #2d2a24; }
+.admin-form-header { display: flex; justify-content: space-between; gap: 20px; align-items: center; margin-bottom: 24px; flex-wrap: wrap; }
+.eyebrow { text-transform: uppercase; letter-spacing: 0.1em; color: #917547; font-weight: 700; margin: 0 0 6px; }
+.admin-form-header h1 { margin: 0; font-size: 1.9rem; }
+.subtext { margin: 4px 0 0; color: #6b6458; }
+.header-actions { display: flex; gap: 10px; align-items: center; }
+.btn { display: inline-flex; align-items: center; gap: 8px; border: none; cursor: pointer; padding: 12px 18px; border-radius: 10px; font-weight: 700; transition: all 0.2s ease; text-decoration: none; }
+.btn.primary { background: linear-gradient(135deg, #917547 0%, #8a6b3c 100%); color: white; box-shadow: 0 6px 18px rgba(145,117,71,0.25); }
+.btn.primary:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(145,117,71,0.35); }
+.btn.ghost { background: #f4eee3; color: #6b6458; border: 1px solid #dfd4c5; }
+.btn.ghost:hover { background: #e8dece; }
+.admin-form { display: flex; flex-direction: column; gap: 20px; }
+.form-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 20px; align-items: start; }
+.card { background: white; border-radius: 14px; padding: 18px; box-shadow: 0 8px 24px rgba(0,0,0,0.05); border: 1px solid #ede5d8; }
+.card-title { font-weight: 800; margin-bottom: 14px; color: #4b4337; }
+.field { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; font-weight: 600; color: #4b4337; }
+.field span { font-size: 0.95rem; }
+.field input, .field textarea, .field select { padding: 12px 14px; border-radius: 10px; border: 2px solid #e4d8c7; background: #fdfaf6; font-size: 1rem; transition: all 0.15s ease; }
+.field input:focus, .field textarea:focus, .field select:focus { outline: none; border-color: #917547; box-shadow: 0 0 0 3px rgba(145,117,71,0.15); background: white; }
+.field textarea { resize: vertical; min-height: 120px; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.upload-drop { display: block; border: 2px dashed #d7c9b6; border-radius: 12px; padding: 16px; text-align: center; background: #fcf8f3; cursor: pointer; transition: all 0.2s ease; }
+.upload-drop:hover { border-color: #917547; background: #f7efe4; }
+.upload-drop input { display: none; }
+.upload-body { display: grid; gap: 6px; justify-items: center; color: #4b4337; }
+.upload-body i { font-size: 1.8rem; color: #917547; }
+.or-divider { text-align: center; color: #8a7f70; font-weight: 600; margin: 10px 0; }
+.current-image { display: flex; gap: 12px; align-items: center; padding: 10px; border: 1px dashed #d7c9b6; border-radius: 10px; background: #fdfaf6; margin-top: 10px; }
+.thumb { width: 72px; height: 72px; background-size: cover; background-position: center; border-radius: 8px; border: 1px solid #e4d8c7; }
+.current-meta { display: grid; gap: 6px; color: #4b4337; font-size: 0.95rem; }
+.checkbox-row { display: inline-flex; gap: 8px; align-items: center; font-weight: 600; color: #4b4337; }
+.checkbox-row input { width: 16px; height: 16px; accent-color: #917547; }
+.toggles { display: grid; gap: 10px; margin-top: 8px; }
+.form-actions { display: flex; justify-content: flex-end; gap: 10px; }
+@media (max-width: 900px) { .form-grid { grid-template-columns: 1fr; } .header-actions { width: 100%; justify-content: flex-start; flex-wrap: wrap; } }
+</style>
